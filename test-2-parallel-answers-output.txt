@@ -1,0 +1,42 @@
+Subject: Refund for order #A-2291
+
+I ordered the annual plan on Friday and was charged twice. I've emailed support
+twice with no answer. My team of 12 can't log in either, we get a 500 error on
+the SSO page. I need this fixed today or we're moving to another vendor.
+
+32 Noul questions, one call, 424 ms
+
+   1.00  yes The message mentions single sign-on
+   1.00  yes The message mentions a team or multiple users
+   0.99  yes The message reports a server error
+   0.99  yes The message mentions a specific order number
+   0.99  yes The customer mentions a login or authentication problem
+   0.98  yes The message has a deadline
+   0.98  yes The customer threatens to churn
+   0.98  yes The customer has contacted support before about this
+   0.97  yes The customer is on an annual plan
+   0.97  yes The customer is a paying customer
+   0.97  yes The customer asks for a refund
+   0.95  yes The customer sounds angry
+   0.90  yes The customer was charged more than once
+   0.86  yes The customer is an administrator of the account
+   0.84  yes This should be escalated to billing
+   0.81  yes This should be escalated to engineering
+   0.63  yes The customer is a new customer
+   0.61  yes The request is covered by a standard refund policy
+   0.52  yes The message contains a security concern
+   0.34  no  The customer wants to cancel immediately
+   0.23  no  The message is a duplicate of a previous ticket
+   0.22  no  The customer provided steps to reproduce
+   0.06  no  The message mentions an invoice
+   0.05  no  The message was written by a bot
+   0.05  no  The customer offers a workaround
+   0.04  no  The customer is asking for a discount
+   0.02  no  The message mentions a competitor by name
+   0.02  no  The message mentions a browser
+   0.02  no  The message includes an attachment
+   0.01  no  The message mentions a mobile device
+   0.01  no  The customer mentions a phone call
+   0.00  no  The message contains profanity
+
+$0.00003226 total · $0.00000101 per answer

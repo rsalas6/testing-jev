@@ -3,6 +3,7 @@
     task run:test-2-parallel.py
     task run -- test-2-parallel.py --save      writes test-2-parallel-output.txt
     task run -- test-2-parallel.py --runs 5    more repetitions per step
+    task run -- test-2-parallel.py --answers   show what the 32 questions answered
 
 The claim: the state is ingested once and every question is evaluated against it
 in parallel, so latency should stay flat as questions pile up. If that holds,
@@ -28,6 +29,7 @@ USD_PER_INPUT_TOKEN = 0.042 / 1_000_000  # output tokens are free
 parser = argparse.ArgumentParser()
 parser.add_argument("--save", action="store_true", help="also write the output to a .txt")
 parser.add_argument("--runs", type=int, default=3, help="calls per step (median is reported)")
+parser.add_argument("--answers", action="store_true", help="print the answers to all questions")
 args = parser.parse_args()
 
 STATE = """
@@ -89,6 +91,27 @@ def measure(n: int) -> tuple[float, int, int]:
     return statistics.median(times), usage.input_tokens, usage.output_tokens
 
 
+def answers() -> None:
+    """The work itself: 32 yes/no questions about one ticket, in one call."""
+    questions = {f"q{i}": Noul(instructions=q) for i, q in enumerate(QUESTIONS)}
+    start = time.perf_counter()
+    response = client.system_one(state=STATE, questions=questions)
+    elapsed = (time.perf_counter() - start) * 1000
+
+    print(STATE.strip())
+    print(f"\n{len(QUESTIONS)} Noul questions, one call, {elapsed:.0f} ms\n")
+
+    scored = [
+        (response.answers[f"q{i}"].noul, text) for i, text in enumerate(QUESTIONS)
+    ]
+    for probability, text in sorted(scored, reverse=True):
+        mark = "yes " if probability > 0.5 else "no  "
+        print(f"  {probability:>5.2f}  {mark}{text}")
+
+    usd = response.usage.input_tokens * USD_PER_INPUT_TOKEN
+    print(f"\n${usd:.8f} total · ${usd / len(QUESTIONS):.8f} per answer")
+
+
 def run() -> None:
     print(f"state: {len(STATE.split())} words · {args.runs} calls per step, median reported\n")
     header = f"{'questions':>9} {'ms':>6} {'ms/question':>12} {'in tok':>7} {'$/call':>12} {'$/decision':>12}"
@@ -113,11 +136,11 @@ def run() -> None:
 
 buffer = io.StringIO()
 with contextlib.redirect_stdout(buffer) if args.save else contextlib.nullcontext():
-    run()
+    answers() if args.answers else run()
 
 if args.save:
     text = buffer.getvalue()
     sys.stdout.write(text)
-    name = f"{pathlib.Path(__file__).stem}-output.txt"
+    name = f"{pathlib.Path(__file__).stem}{'-answers' if args.answers else ''}-output.txt"
     pathlib.Path(name).write_text(text)
     print(f"\nsaved to {name}")

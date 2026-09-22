@@ -7,13 +7,18 @@ Playing with Jev, TypeSafe AI's first System One model.
 With [Task](https://taskfile.dev) (builds the image automatically):
 
 ```sh
-task                             # list tasks
-task run:test-1-types.py         # or: task run -- test-1-types.py
-task run -- test-1-types.py --raw    # full API response, pretty printed
-task repl                        # Python REPL in the container
-task shell                       # bash in the container
-task clean                       # drop containers and image
+task                              # list tasks
+task run:test-1-types.py
+task run -- test-1-types.py --raw          # full API response
+task run:test-2-parallel.py
+task run -- test-2-parallel.py --answers   # what it decided
+task run:test-3-calibration.py
+task repl                         # Python REPL in the container
+task shell                        # bash in the container
+task clean                        # drop the image
 ```
+
+Save an output when you want to keep it: `task run:test-1-types.py > test-1.txt`.
 
 Plain Docker works too:
 
@@ -29,8 +34,9 @@ never baked into the image (`.dockerignore` keeps it out of the build context).
 
 | File | What it does |
 | --- | --- |
-| `test-1-types.py` | The three question types (Choice, Score, Noul) in one call. `--raw` prints the whole response, `--state "..."` evaluates your own text |
-| `test-2-parallel.py` | Latency and cost as the number of questions grows from 1 to 32 |
+| `test-1-types.py` | The three question types: Choice, Score, Noul |
+| `test-2-parallel.py` | 1 question vs. 20 in one call: latency and cost |
+| `test-3-calibration.py` | Does "0.8" really happen 80% of the time? |
 
 Every script takes `--save`, which writes its output next to it as `<script>-output.txt`.
 

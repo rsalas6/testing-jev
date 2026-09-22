@@ -1,0 +1,25 @@
+Ash throws a Poke Ball at a wild Pikachu. It bounces off, the Pikachu
+Thunderbolts him, and Team Rocket shows up in a hot air balloon. 
+
+20 questions, one call, 310 ms
+
+   0.14  no   A Pokemon is being caught
+   0.99  yes  Someone gets electrocuted
+   0.99  yes  Team Rocket appears
+   0.01  no   The scene happens indoors
+   0.99  yes  A Poke Ball is used
+   0.99  yes  The Pikachu is wild
+   0.98  yes  Ash is the trainer in the scene
+   0.34  no   The balloon is shaped like a Meowth
+   0.08  no   Someone is injured badly enough to need a hospital
+   0.03  no   This is a battle between two trainers
+   0.01  no   A legendary Pokemon appears
+   0.07  no   The Pokemon obeys Ash
+   0.01  no   The scene is from Dragon Ball
+   0.99  yes  Pikachu is an electric type
+   0.46  no   Someone says the word 'twerp'
+   0.00  no   The scene takes place in space
+   0.02  no   Ash succeeds on his first try
+   0.97  yes  There is a flying vehicle in the scene
+   0.98  yes  The Pikachu attacks the trainer
+   0.94  yes  The scene is animated

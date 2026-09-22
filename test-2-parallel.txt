@@ -1,0 +1,10 @@
+Ash throws a Poke Ball at a wild Pikachu. It bounces off, the Pikachu
+Thunderbolts him, and Team Rocket shows up in a hot air balloon. 
+
+questions     ms  ms each  tokens       $ each
+        1    408      408     310   0.00001302
+        5    458       92     357   0.00000300
+       10    298       30     429   0.00000180
+       20    178        9     559   0.00000117
+
+Same wall clock, 20x the decisions. Ask everything in one call.

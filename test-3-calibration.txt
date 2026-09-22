@@ -1,0 +1,17 @@
+41 statements over 10 scenes
+
+accuracy      39/41 = 95%
+brier score   0.033   (0 = perfect, 0.25 = always saying 50/50)
+
+     it said   n  was true
+        0.04  18        0%
+        0.57   2       50%
+        0.85   4       75%
+        0.95  17      100%
+
+calibration error 0.052   (how far the two columns are apart)
+
+biggest misses
+  said 0.82, answer is no:  Link now has 35 rupees
+  said 0.59, answer is no:  The attack is very effective
+  said 0.56, answer is yes:  Link's wallet is full

@@ -1,0 +1,10 @@
+Goku powers up to Super Saiyan 3 and screams for twenty minutes.
+Frieza waits patiently, filing his nails. 
+
+[choice] genre       = comedy  (confidence 0.98)
+         {'comedy': 0.99, 'fight': 0.01, 'other': 0.0, 'romance': 0.0}
+[score]  power_level = 1.47  (confidence 0.21)
+         {0: 0.06, 1: 0.4, 2: 0.54}
+[noul]   is_anime    = 0.84
+
+-> keep watching

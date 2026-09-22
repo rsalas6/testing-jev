@@ -1,0 +1,39 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 428,
+    "output_tokens": 81
+  },
+  "answers": {
+    "genre": {
+      "type": "choice",
+      "choice": "comedy",
+      "confidence": 0.98,
+      "probabilities": {
+        "comedy": 0.98,
+        "romance": 0.0,
+        "fight": 0.02,
+        "other": 0.0
+      }
+    },
+    "power_level": {
+      "type": "score",
+      "score": 1.5,
+      "confidence": 0.24,
+      "legend": {
+        "0": "Nothing is happening",
+        "1": "A normal fight",
+        "2": "The planet might explode"
+      },
+      "probabilities": {
+        "0": 0.08,
+        "1": 0.35,
+        "2": 0.57
+      }
+    },
+    "is_anime": {
+      "type": "noul",
+      "noul": 0.83
+    }
+  }
+}

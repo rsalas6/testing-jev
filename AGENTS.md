@@ -9,7 +9,8 @@ Whatever comes out of here feeds posts on beto.page, written in English.
 Everything runs in Docker, driven by Task: `task run:test-N-name.py`. See `README.md`.
 
 - One file per experiment: `test-<n>-<topic>.py`, numbered in the order we built them.
-- Every script takes `--save` and writes `<script>-output.txt`. Those files are committed so results can be read without spending another call.
+- Keep the scripts short and readable; they are teaching material for the posts. Examples use pop culture (Pokemon, Dragon Ball) so the right answer is obvious to the reader.
+- Outputs are saved by hand when worth keeping: `task run:test-1-types.py > test-1.txt`.
 - The key lives in `.env` as `TYPESAFE_API_KEY` (see `.env.example`). Never commit `.env`.
 
 ## Model notes

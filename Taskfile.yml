@@ -1,0 +1,57 @@
+version: "3"
+
+vars:
+  IMAGE: jev-test
+  # Mount the code so edits run without rebuilding; .env stays out of the image.
+  DOCKER: docker run --rm --env-file .env -v "$PWD:/app" {{.IMAGE}}
+  DOCKER_TTY: docker run --rm -it --env-file .env -v "$PWD:/app" {{.IMAGE}}
+
+tasks:
+  default:
+    desc: List the available tasks
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Build the image (needed after changing requirements.txt)
+    cmds:
+      - docker build -q -t {{.IMAGE}} . > /dev/null
+    sources:
+      - Dockerfile
+      - requirements.txt
+    generates:
+      - .task/build-stamp
+    status:
+      - docker image inspect {{.IMAGE}} >/dev/null 2>&1
+
+  run:
+    desc: 'Run a script, e.g. task run -- hello.py'
+    deps: [build]
+    cmds:
+      - '{{.DOCKER}} python {{.CLI_ARGS | default "test-1-hello.py"}}'
+
+  "run:*":
+    desc: 'Shorter form: task run:types_demo.py'
+    deps: [build]
+    vars:
+      SCRIPT: "{{index .MATCH 0}}"
+    cmds:
+      - "{{.DOCKER}} python {{.SCRIPT}}"
+
+  shell:
+    desc: Open a shell inside the container
+    deps: [build]
+    cmds:
+      - "{{.DOCKER_TTY}} bash"
+
+  repl:
+    desc: Open a Python REPL inside the container
+    deps: [build]
+    cmds:
+      - "{{.DOCKER_TTY}} python"
+
+  clean:
+    desc: Remove the built image
+    cmds:
+      - docker image rm -f {{.IMAGE}}

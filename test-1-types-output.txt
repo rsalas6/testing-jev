@@ -1,0 +1,20 @@
+state: Hi, I've been trying to connect my Stripe account for 3 days and the integration keeps failing. I'm losing sales. Please help ASAP.
+
+[choice] department = technical   confidence 0.63
+    ███████████████·····  0.73  technical
+    █████···············  0.27  billing
+    ····················  0.00  other
+    ····················  0.00  sales
+
+[score]  frustration = 1.0   confidence 1.00
+    ████████████████████  1.00  Frustrated but civil
+    ····················  0.00  Calm, just stating facts
+    ····················  0.00  Very angry, strong language or threatening to leave
+
+[noul]   is_urgent = 0.99   (no confidence field: the number is both)
+    ████████████████████
+
+502 ms for all three · jev-1.13.0
+
+cost: 445 in / 80 out tokens = $0.00001869   (output tokens are free)
+      $0.0187 per 1k calls · 53,504 calls per dollar

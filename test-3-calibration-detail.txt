@@ -1,0 +1,90 @@
+
+Pikachu uses Thunderbolt on Onix, a rock and ground type.
+    jev  truth     statement
+   0.98  True  ok   The attack is electric
+   0.55  False MISS The attack is very effective
+   0.01  False ok   Onix is a water type
+   0.98  True  ok   A Pokemon is attacking another Pokemon
+
+Goku is a Saiyan raised on Earth. He has died twice and come back both times.
+    jev  truth     statement
+   0.06  False ok   Goku is human
+   0.87  True  ok   Goku is currently alive
+   0.95  True  ok   Goku has been to the afterlife
+   0.08  False ok   Goku was born on Earth
+
+Mario jumps on a Goomba, grabs a fire flower, and falls into a pit.
+    jev  truth     statement
+   0.95  True  ok   Mario defeats an enemy
+   0.98  True  ok   Mario picks up a power-up
+   0.08  False ok   Mario finishes the level
+   0.92  True  ok   Mario loses a life
+   0.06  False ok   The fire flower saves him from the pit
+
+Batman has no superpowers. He is a billionaire who trained for years and refuses to kill.
+    jev  truth     statement
+   0.02  False ok   Batman can fly on his own
+   0.98  True  ok   Batman is wealthy
+   0.03  False ok   Batman kills his enemies
+   0.94  True  ok   Batman's abilities come from training
+
+Vegeta trains at 300x gravity for six months and still loses to Goku.
+    jev  truth     statement
+   0.93  True  ok   Vegeta trained hard
+   0.02  False ok   Vegeta won the fight
+   0.02  False ok   The training lasted more than a year
+   0.90  True  ok   Goku is stronger in this fight
+
+A wild Magikarp uses Splash. Nothing happens. It is level 5.
+    jev  truth     statement
+   0.01  False ok   The attack did damage
+   0.94  True  ok   The Pokemon is weak
+   0.86  True  ok   This Magikarp could evolve into Gyarados later
+   0.02  False ok   The Pokemon is fully evolved
+
+Naruto eats ramen for dinner on Monday, Tuesday and Wednesday, then has barbecue on Thursday.
+    jev  truth     statement
+   0.99  True  ok   Naruto ate ramen three days in a row
+   0.02  False ok   Naruto ate ramen every day that week
+   0.02  False ok   Naruto ate ramen on Thursday
+   0.85  True  ok   Naruto likes ramen
+
+Thanos snaps his fingers with all six Infinity Stones. Half of all life disappears.
+    jev  truth     statement
+   0.89  True  ok   Thanos succeeded
+   0.03  False ok   Everyone died
+   0.09  False ok   Thanos was missing a stone
+   0.92  True  ok   This is bad news for the heroes
+
+Link opens a chest and finds 20 rupees. He already had 15. His wallet holds a maximum of 30.
+    jev  truth     statement
+   0.82  False MISS Link now has 35 rupees
+   0.63  True  ok   Link's wallet is full
+   0.98  True  ok   Link found money in the chest
+   0.06  False ok   Link lost rupees in this scene
+
+Ash has lost every Pokemon League he has entered, but he keeps travelling to new regions with Pikachu.
+    jev  truth     statement
+   0.06  False ok   Ash has won a Pokemon League
+   0.03  False ok   Ash gives up easily
+   0.97  True  ok   Pikachu stays with Ash
+   0.98  True  ok   Ash has competed more than once
+
+41 statements over 10 scenes
+
+accuracy      39/41 = 95%
+brier score   0.031   (0 = perfect, 0.25 = always saying 50/50)
+
+     it said   n  was true
+        0.04  18        0%
+        0.55   1        0%
+        0.63   1      100%
+        0.86   5       80%
+        0.96  16      100%
+
+calibration error 0.064   (how far the two columns are apart)
+
+biggest misses
+  said 0.82, answer is no:  Link now has 35 rupees
+  said 0.55, answer is no:  The attack is very effective
+  said 0.63, answer is yes:  Link's wallet is full

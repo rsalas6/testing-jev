@@ -1,12 +1,14 @@
 """Test 3 — when Jev says 0.8, is it right 80% of the time?
 
     task run:test-3-calibration.py
+    task run -- test-3-calibration.py --detail   every statement, one by one
 
 This is the claim that matters and the one you can't check by reading the docs.
 Every statement below has an answer I wrote by hand (True or False). Easy ones,
 plus a few that need a second of thought, so the probabilities spread out.
 """
 
+import sys
 from collections import defaultdict
 
 from dotenv import load_dotenv
@@ -116,13 +118,28 @@ CASES = [
 
 client = TypeSafeClient()
 
-# Ask each scene's questions in one call, and keep (predicted, actual).
+detail = "--detail" in sys.argv
+
+# Ask each scene's questions in one call, and keep (what Jev said, the truth).
 results = []
 for scene, items in CASES:
     questions = {f"q{i}": Noul(instructions=text) for i, (text, _) in enumerate(items)}
     answers = client.system_one(state=scene, questions=questions).answers
+
+    if detail:
+        print(f"\n{scene}")
+        print(f"  {'jev':>5}  {'truth':<5} {'':<3} statement")
+
     for i, (text, truth) in enumerate(items):
-        results.append((answers[f"q{i}"].noul, truth, text))
+        said = answers[f"q{i}"].noul
+        results.append((said, truth, text))
+        if detail:
+            # Jev only sees the statement. `truth` is the answer we wrote by hand.
+            hit = "ok" if (said > 0.5) == truth else "MISS"
+            print(f"  {said:>5.2f}  {str(truth):<5} {hit:<4} {text}")
+
+if detail:
+    print()
 
 total = len(results)
 correct = sum((p > 0.5) == truth for p, truth, _ in results)

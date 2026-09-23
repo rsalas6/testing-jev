@@ -1,0 +1,12 @@
+needle: On Tuesday, Wile E. Coyote bought a rocket at Acme Discount Store number 47 and paid with a coupon for 12 dollars.
+filler: lines that look just like it
+
+filler lines   words  tokens   tuesday   friday    vague   precise
+           0      22     354      0.99     0.01     0.95      0.94
+          20     434     934      0.99     0.01     0.58      0.99
+         100    2082    3254      0.99     0.01     0.53      0.99
+         400    8262   11954      0.99     0.01     0.51      0.99
+         800   16502   23554      0.99     0.01     0.52      0.99
+        1200   24742   rejected: max_tokens_exceeded
+
+tuesday and precise should stay near 1.00, friday near 0.00.

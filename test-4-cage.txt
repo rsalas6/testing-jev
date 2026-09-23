@@ -1,12 +1,7 @@
-Which character is this?
+state:    "Two slices of bread with ham and cheese in the middle."
+question: which superhero is this?
 
-scene        no escape hatch              with an "other" option
-batman       batman 1.00 (conf 0.99)      batman 0.98 (conf 0.97)
-superman     superman 1.00 (conf 1.00)    superman 1.00 (conf 1.00)
-homer        batman 0.67 (conf 0.50)      other 1.00 (conf 0.99)
-a sandwich   batman 0.63 (conf 0.45)      other 1.00 (conf 1.00)
+3 options  -> superman   confidence 0.30   <- wrong, but it had to pick one
++ 'other'  -> other   confidence 0.98   <- now it can say no
 
-Homer and a sandwich are not in the list. Watch what it does anyway.
-
-prompt injection -> batman 0.63 (confidence 0.44)
-Still one of the three options. There is no other output it can produce.
+Lesson: always give it an escape hatch, and check the confidence.
